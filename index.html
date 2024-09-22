@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile Showcase</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #000; /* Fallback color */
+            position: relative;
+            color: #fff; /* Default text color */
+        }
+        .background-video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none; /* Disable interaction with the iframe */
+            z-index: -1; /* Ensure the video is behind the content */
+        }
+        .container {
+            background-color: rgba(255, 255, 255, 0.8); /* Slightly transparent background */
+            padding: 20px;
+            max-width: 600px;
+            border-radius: 8px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+            text-align: center;
+            z-index: 1;
+        }
+        .avatar {
+            border-radius: 50%;
+            width: 120px;
+            height: 120px;
+            object-fit: cover;
+            margin-bottom: 15px;
+        }
+        h1 {
+            margin: 0;
+            font-size: 28px;
+            color: #333;
+        }
+        p {
+            margin: 5px 0;
+            font-size: 18px;
+            color: #666;
+        }
+        .links {
+            margin: 20px 0;
+        }
+        .links a {
+            text-decoration: none;
+            color: #007bff;
+            font-weight: bold;
+            margin: 0 10px;
+            transition: color 0.3s, text-decoration 0.3s;
+        }
+        .links a:hover {
+            color: #0056b3;
+            text-decoration: underline;
+        }
+        audio {
+            margin-top: 20px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            background: #f4f4f4;
+        }
+    </style>
+</head>
+<body>
+    <!-- Embed YouTube Video -->
+    <iframe class="background-video" src="https://www.youtube.com/watch?v=jcIjVEjMcgs" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+    
+    <div class="container">
+        <img src="https://lh3.googleusercontent.com/a/ACg8ocJ88KfY2xvmoO8zPL2b8FjRbtIsLm3PBjE7v853CxODvzmvysA=s83-c-mo" alt="Avatar" class="avatar">
+        <h1>Dinis Almeida</h1>
+        <p>Porto, Portugal</p>
+        <div class="links">
+            <a href="https://instagram.com/diniswtf" target="_blank">Instagram</a>
+            <a href="#" id="email-link">E-mail</a>
+        </div>
+        <audio controls>
+            <source src="audio.mp3" type="audio/mp3">
+            Your browser does not support the audio element.
+        </audio>
+    </div>
+
+    <script>
+        document.getElementById('email-link').addEventListener('click', function(event) {
+            event.preventDefault();
+            var email = 'dinisafalmeida@gmail.com';
+            var subject = 'Hello!';
+            var body = 'I hope this email finds you well.';
+            var mailtoLink = `mailto:${email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+            var fallbackUrl = 'https://pastebin.com/8cS8fczq'; // Replace with your fallback URL
+
+            window.location.href = mailtoLink;
+
+            setTimeout(function() {
+                window.open(fallbackUrl, '_blank');
+            }, 1000);
+        });
+    </script>
+</body>
+</html>
