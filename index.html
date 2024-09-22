@@ -14,7 +14,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            background: #000; /* Fallback color */
+            background: #000; /* Fallback color for unsupported video backgrounds */
             position: relative;
             color: #fff; /* Default text color */
         }
@@ -24,7 +24,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            pointer-events: none; /* Disable interaction with the iframe */
+            object-fit: cover;
             z-index: -1; /* Ensure the video is behind the content */
         }
         .container {
@@ -76,9 +76,10 @@
     </style>
 </head>
 <body>
-    <!-- Embed YouTube Video -->
-    <iframe class="background-video" src="https://www.youtube.com/watch?v=jcIjVEjMcgs" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-    
+    <video class="background-video" autoplay muted loop>
+        <source src="video.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
     <div class="container">
         <img src="https://lh3.googleusercontent.com/a/ACg8ocJ88KfY2xvmoO8zPL2b8FjRbtIsLm3PBjE7v853CxODvzmvysA=s83-c-mo" alt="Avatar" class="avatar">
         <h1>Dinis Almeida</h1>
@@ -87,6 +88,7 @@
             <a href="https://instagram.com/diniswtf" target="_blank">Instagram</a>
             <a href="#" id="email-link">E-mail</a>
         </div>
+        <!-- Replace the src with the path to your local MP3 file -->
         <audio controls>
             <source src="audio.mp3" type="audio/mp3">
             Your browser does not support the audio element.
@@ -99,14 +101,16 @@
             var email = 'dinisafalmeida@gmail.com';
             var subject = 'Hello!';
             var body = 'I hope this email finds you well.';
-            var mailtoLink = `mailto:${email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+            var mailtoLink = mailto:${email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)};
             var fallbackUrl = 'https://pastebin.com/8cS8fczq'; // Replace with your fallback URL
 
+            // Attempt to open the mailto link
             window.location.href = mailtoLink;
 
+            // Set a timeout to open a fallback URL in a new tab if mail client does not open
             setTimeout(function() {
-                window.open(fallbackUrl, '_blank');
-            }, 1000);
+                window.open(fallbackUrl, '_blank'); // Open fallback URL in a new tab
+            }, 1000); // Adjust timeout as needed
         });
     </script>
 </body>
